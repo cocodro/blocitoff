@@ -6,9 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+  <body>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li><%= link_to "Blocitoff", welcome_index_path %></li>
+        <li><%= link_to "About", welcome_about_path %></li>
+      </ul>
 
-<%= yield %>
-
-</body>
+      <%= yield %>
+    </div>
+  </body>
 </html>
