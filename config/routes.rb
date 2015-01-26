@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :lists, except: [:index]
+
+  resources :lists, except: [:index] do
+    resources :tasks, only: [:new]
+  end
 
   devise_for :users
   get 'about' => 'welcome#about'

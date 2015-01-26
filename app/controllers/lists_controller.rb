@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  
   def index
     @lists= List.all
   end
@@ -6,7 +7,7 @@ class ListsController < ApplicationController
   def show
     if current_user.list
       @list = List.find(params[:id])
-      @list = current_user.list
+      @tasks = @list.tasks
     end
   end
 
@@ -33,8 +34,7 @@ class ListsController < ApplicationController
 
   def update
     @list = List.find(params[:id])
-    @list.update_attributes(list_params)
-    if @list.save
+    if @list.update_attributes(list_params)
       flash[:notice] = "List updated!"
       redirect_to @list
     else
