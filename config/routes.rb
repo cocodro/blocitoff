@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :lists, except: [:index] do
-    resources :tasks, only: [:new]
+    resources :tasks, only: [:new, :create, :destroy]
   end
 
   devise_for :users

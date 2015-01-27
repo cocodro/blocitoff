@@ -12,9 +12,21 @@ class TasksController < ApplicationController
     @task.list = @list
     if @task.save
       flash[:notice] = "New task created!"
-      redirect_to @task
+      redirect_to @list
     else
       flash[:error] = "Failed to create new task."
+      redirect_to :back
+    end
+  end
+
+  def destroy
+    @list = List.find(params[:list_id])
+    @task = Task.find(params[:id])
+    if @task.destroy
+      flash[:notice] = "Task deleted."
+      redirect_to @list
+    else
+      flash[:error] = "Failed to delete task."
       redirect_to :back
     end
   end

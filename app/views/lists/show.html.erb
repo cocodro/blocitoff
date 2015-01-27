@@ -4,9 +4,17 @@
   <h1><%= @list.title %></h1>
     <div class="media-body">
       <h4 class="media-heading">
-        <%# link_to task.description, [@list, task] %>
+          <%= render partial: "tasks/task", collection: @tasks %>
       </h4>
     </div>
+
+  </br>
+
+</br>
+
+  <div>
+    <%= render partial: "tasks/form", locals: {list: @list} %>
+  </div>
   <p><%= link_to "Edit List", edit_list_path(@list) %></p>
   <p><%= link_to "Delete List", @list, method: :delete %></p>
 <% end %>
