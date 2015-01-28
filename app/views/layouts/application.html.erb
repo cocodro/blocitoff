@@ -11,8 +11,10 @@
       <ul class="nav nav-tabs">
         <li><%= link_to "Blocitoff", root_path %></li>
         <li><%= link_to "About", about_path %></li>
-        <li><%= link_to "My To-Do List", current_user.list if current_user.list %></li>
-        <li><%= link_to "New List", new_list_path unless current_user.list %></li>
+        <% if current_user %>
+          <li><%= link_to "My To-Do List", current_user.list %></li>
+          <li><%= link_to "New List", new_list_path unless current_user.list %></li>
+        <% end %>
 
           <div class="pull-right user-info">
             <% if current_user %>
