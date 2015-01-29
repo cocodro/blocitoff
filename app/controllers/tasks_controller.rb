@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  respond_to :html, :js
 
   def new
     @list = List.find(params[:list_id])
@@ -23,11 +24,13 @@ class TasksController < ApplicationController
     @list = List.find(params[:list_id])
     @task = Task.find(params[:id])
     if @task.destroy
-      flash[:notice] = "Task deleted."
-      redirect_to @list
+      flash[:notice] = "Task completed! Way to go!"
     else
-      flash[:error] = "Failed to delete task."
-      redirect_to :back
+      flash[:error] = "Failed to remove task from list!"
+    end
+
+    respond_with(@task) do |format|
+      format.html { redirect_to @list }
     end
   end
 
