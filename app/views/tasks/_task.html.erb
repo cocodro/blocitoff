@@ -1,4 +1,4 @@
-<div>
+<%= div_for task do %>
   <h3><%= task.description %></h3>
     <small><%= task.days_left %> days left <%= link_to "", [@list, task], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %></small>
-</div>
+<% end %>
