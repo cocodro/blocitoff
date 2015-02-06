@@ -1,11 +1,10 @@
 <%= form_for [list, Task.new] do |f| %>
   <div class="row-fluid">
     <div class="input-group">
-      <%= f.text_field :description, class: 'form-control', placeholder: "Describe the task" %>
+      <%= f.text_field :description, class: 'form-control', placeholder: "Describe new task" %>
       <div class="input-group-btn">
-        <%= f.submit "Add New Task to List", class: 'btn btn-success' %>
+        <%= f.submit "Add Task to List", class: 'btn btn-success' %>
       </div>
     </div>
-    <%= f.label :description %>
   </div>
 <% end %>
